@@ -5,18 +5,20 @@ const products = [
   { id: 4, title: 'Gamepad', price: 4500 },
 ];
 
-const renderProduct = (title, price, img = 'http://unsplash.it/150/150?random&gravity=center') => {
-  return `<div class="product-item">
-            <img src="${img}" alt="">
-            <h3>${title}</h3>
-            <p>${price}</p>
+const renderProduct = (item, img = 'http://unsplash.it/150/150?random&gravity=center') => `<div class="product-item" data-id="${this.id}">
+            <img src="${img}" alt="img">
+            <div class="desc">
+            <h3>${item.title}</h3>
+            <p>${item.price}</p>
             <button class="by-btn">Добавить в корзину</button>
+          </div>
           </div>`;
-};
+;
+
 
 const renderProducts = (list) => {
   //СОКРАТИЛА
-  document.querySelector('.products').innerHTML = list.map(item => renderProduct(item.title, item.price)).join('');
+  document.querySelector('.products').insertAdjacentHTML('beforeend', list.map(item => renderProduct(item)).join(''));
 };
 
 renderProducts(products);
